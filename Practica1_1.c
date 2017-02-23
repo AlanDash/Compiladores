@@ -17,16 +17,25 @@ char sigCar(char cad[], int *i){
 void delta(char ei[], char c[], char *tabla[], char **ef){
   int aux = 0;
   for(int i=4; i<25; i=i+4){
-    if(!strcmp(ei,tabla[i]))
+    if(!strcmp(ei,tabla[i])){
     aux = i;
+    printf("indice: %d\n", i);
   }
+  }
+  printf("caracter: %s\n", c);
 
-  if(!strcmp(c,tabla[1]))
+  if(!strcmp(c,tabla[1])){
     *ef = tabla[aux+1];
-  else if(!strcmp(c,tabla[2]))
+    printf("ef: %s\n", *ef);
+  }
+  else if(!strcmp(c,tabla[2])){
     *ef = tabla[aux+2];
-  else if(!strcmp(c,tabla[3]))
+    printf("ef: %s\n", *ef);
+  }
+  else if(!strcmp(c,tabla[3])){
     *ef = tabla[aux+3];
+    printf("ef: %s\n", *ef);
+  }
 }
 
 int edoAcep(char estado[], char *finales[]){
@@ -60,15 +69,21 @@ int main() {
 
   printf("Introduce una cadena de la forma \"ab|(ab)*c\" : ");
   scanf("%s", cadena);
+  printf("Cadena: %s\n", cadena);
 
   char aux = cadena[0];   // Se inicializa en el primer caracter de la cadena
   char car[] = {aux, '\0'};
+  printf("car: %s\n", car);
 
   while ( (strcmp(car,"\0")) != 0 ) {   // mientras no sea fin de cadena
-    delta(estado, car, matriz , &estado);  // estado al que es mandado
+    printf("Comienza while\n");
+    printf("strcmp: %d\n", strcmp(car,"\0"));
+    delta(estado, car, matriz , &estado);  // se asigna a estado el estado al que es mandado con ese caracter
+    printf("estado: %s\n", estado);
     aux = sigCar(cadena, &i);    // Se recorre la cadena
-    char car[] = {aux, '\0'};
-
+   char aux2[] = {aux, '\0'};
+    strcpy(car,aux2);
+    printf("car: %s\n", car);
     if(!(strcmp(estado,"-")))  // Se compara si se llego a un estado de error
       break;
   }
