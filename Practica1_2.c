@@ -69,13 +69,9 @@ int main() {
     char aux2[] = { aux, '\0' };
     strcpy( car,aux2 );
 
-    if( !(strcmp(estado,"-")) )  // Se compara si se llego a un estado de error
-      break;
   }
 
-  if(!(strcmp(estado,"-")))
-    printf("Error\n");
-  else if(!edoAcep(estado, finales))
+  if(!edoAcep(estado, finales))
     printf("Exito\n");
   else
   printf("Error\n");
