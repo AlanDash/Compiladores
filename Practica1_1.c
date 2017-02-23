@@ -5,8 +5,8 @@ para la ER "ab|(ab)*c" */
 #define N 64
 
 char sigCar(char[], int*);
-void delta(char[], char, char*);
-int edoAcep(char[], char[][2]);
+void delta(char[], char [], char *[] ,char**);
+int edoAcep(char[], char *[]);
 
 char sigCar(char cad[], int *i){
   *i = (*i + 1);
@@ -14,17 +14,17 @@ char sigCar(char cad[], int *i){
   return c;
 }
 
-void delta(char ei[], char c, char[][7], char *ef){
+void delta(char ei[], char c[], char *tabla[], char **ef){
 
   for(int i=0; i<25; i++){
-
+    
   }
 }
 
-int edoAcep(char estado[], char finales[][2]){
+int edoAcep(char estado[], char *finales[]){
   int res = 1;
   for(int i=0; i<2; i++){ // Compara todos los estados de aceptacion
-    if(!strcmp(estado, finales[][i])){
+    if(!strcmp(estado, finales[i])){
       res = 0;
       break;
     }
@@ -37,7 +37,7 @@ int edoAcep(char estado[], char finales[][2]){
 
 
 int main() {
-  char matriz[][7] = {" ", "a", "b", "c",         // Declaracion de matriz delta
+  char *matriz[] = {" ", "a", "b", "c",         // Declaracion de matriz delta
                       "s0", "s1", "-", "s2",
                       "s1", "-", "s3", "-",
                       "s2", "-", "-", "-",
@@ -45,7 +45,7 @@ int main() {
                       "s4", "-", "s5", "-",
                       "s5", "s4", "-", "s2"};
 
-  char finales[][2] = {"s2", "s3"};
+  char *finales[] = {"s2", "s3"};
   char cadena[N];
   char *estado = "s0";  // Se inicializa en s0
   int i = 0;
@@ -53,11 +53,13 @@ int main() {
   printf("Introduce una cadena de la forma \"ab|(ab)*c\" : ");
   scanf("%s", cadena);
 
-  char car = cadena[0];   // Se inicializa en el primer caracter de la cadena
+  char aux = cadena[0];   // Se inicializa en el primer caracter de la cadena
+  char car[] = {aux, '\0'};
 
   while ( (strcmp(car,"\0")) != 0 ) {   // mientras no sea fin de cadena
-    delta(estado, car, *estado);  // estado al que es mandado
-    car = sigCar(cadena, i);    // Se recorre la cadena
+    delta(estado, car, matriz , &estado);  // estado al que es mandado
+    aux = sigCar(cadena, &i);    // Se recorre la cadena
+    char car[] = {aux, '\0'};
 
     if(!(strcmp(estado,"-")))  // Se compara si se llego a un estado de error
       break;
