@@ -17,8 +17,10 @@ char sigCar(char cad[], int *i){
 void delta(char ei[], char c[], char *tabla[], char **ef){
   int aux = 0;
   for(int i=3; i<28; i=i+3){
-    if(!strcmp(ei,tabla[i]))
+    if(!strcmp(ei,tabla[i])){
     aux = i;
+    break;
+    }
   }
 
   if(!strcmp(c,tabla[1]))
@@ -57,7 +59,6 @@ int main() {
 
   printf("Introduce una cadena de la forma \"(a|b)*a(a|b)(a|b)\" : ");
   scanf("%s", cadena);
-
   char aux = cadena[0];   // Se inicializa en el primer caracter de la cadena
   char car[] = { aux, '\0' };
 

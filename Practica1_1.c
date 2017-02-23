@@ -19,6 +19,7 @@ void delta(char ei[], char c[], char *tabla[], char **ef){
   for(int i=4; i<25; i=i+4){
     if(!strcmp(ei,tabla[i]))
     aux = i;
+    break;
   }
 
   if(!strcmp(c,tabla[1]))
