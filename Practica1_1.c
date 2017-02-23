@@ -17,9 +17,10 @@ char sigCar(char cad[], int *i){
 void delta(char ei[], char c[], char *tabla[], char **ef){
   int aux = 0;
   for(int i=4; i<25; i=i+4){
-    if(!strcmp(ei,tabla[i]))
+    if(!strcmp(ei,tabla[i])){
     aux = i;
     break;
+    }
   }
 
   if(!strcmp(c,tabla[1]))
