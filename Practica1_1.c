@@ -15,10 +15,18 @@ char sigCar(char cad[], int *i){
 }
 
 void delta(char ei[], char c[], char *tabla[], char **ef){
-
-  for(int i=0; i<25; i++){
-    
+  int aux = 0;
+  for(int i=4; i<25; i=i+4){
+    if(!strcmp(ei,tabla[i]))
+    aux = i;
   }
+
+  if(!strcmp(c,tabla[1]))
+    *ef = tabla[aux+1];
+  else if(!strcmp(c,tabla[2]))
+    *ef = tabla[aux+2];
+  else if(!strcmp(c,tabla[3]))
+    *ef = tabla[aux+3];
 }
 
 int edoAcep(char estado[], char *finales[]){
