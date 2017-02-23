@@ -42,17 +42,19 @@ int edoAcep(char estado[], char *finales[]){
 
 
 int main() {
-  char *matriz[] = {  " ", "a", "b", "c",         // Declaracion de matriz delta
-                      "s0", "s1", "-", "s2",
-                      "s1", "-", "s3", "-",
-                      "s2", "-", "-", "-",
-                      "s3", "s4", "-", "s2",
-                      "s4", "-", "s5", "-",
-                      "s5", "s4", "-", "s2" };
+  char *matriz[] = {  " ", "a", "b",
+                      "g11", "g12", "g11",
+                      "g12", "g5", "g6",
+                      "g5", "g7", "g8",
+                      "g7", "g7", "g8",
+                      "g6", "g9", "g10",
+                      "g8", "g9", "g10",
+                      "g10", "g12", "g11",
+                      "g9", "g5", "g6" };
 
-  char *finales[] = { "s2", "s3" };
+  char *finales[] = { "g10", "g9", "g8", "g7" };
   char cadena[N];
-  char *estado = "s0";  // Se inicializa en s0
+  char *estado = "g11";  // Se inicializa en s0
   int i = 0;
 
   printf("Introduce una cadena de la forma \"ab|(ab)*c\" : ");
