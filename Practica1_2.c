@@ -16,7 +16,7 @@ char sigCar(char cad[], int *i){
 
 void delta(char ei[], char c[], char *tabla[], char **ef){
   int aux = 0;
-  for(int i=4; i<25; i=i+4){
+  for(int i=3; i<28; i=i+3){
     if(!strcmp(ei,tabla[i]))
     aux = i;
   }
@@ -25,13 +25,11 @@ void delta(char ei[], char c[], char *tabla[], char **ef){
     *ef = tabla[aux+1];
   else if(!strcmp(c,tabla[2]))
     *ef = tabla[aux+2];
-  else if(!strcmp(c,tabla[3]))
-    *ef = tabla[aux+3];
 }
 
 int edoAcep(char estado[], char *finales[]){
   int res = 1;
-  for(int i=0; i<2; i++){ // Compara todos los estados de aceptacion
+  for(int i=0; i<4; i++){ // Compara todos los estados de aceptacion
     if(!strcmp(estado, finales[i])){
       res = 0;
       break;
@@ -54,10 +52,10 @@ int main() {
 
   char *finales[] = { "g10", "g9", "g8", "g7" };
   char cadena[N];
-  char *estado = "g11";  // Se inicializa en s0
+  char *estado = "g11";  // Se inicializa en g11
   int i = 0;
 
-  printf("Introduce una cadena de la forma \"ab|(ab)*c\" : ");
+  printf("Introduce una cadena de la forma \"(a|b)*a(a|b)(a|b)\" : ");
   scanf("%s", cadena);
 
   char aux = cadena[0];   // Se inicializa en el primer caracter de la cadena
